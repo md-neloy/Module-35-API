@@ -14,13 +14,15 @@
   </head>
   <body>
     <header>
-      <nav class="w-11/12 mx-auto flex justify-between items-center py-2 border-b">
+      <nav
+        class="w-11/12 mx-auto flex justify-between items-center py-2 border-b"
+      >
         <div class="logo">
           <img src="assets/Logo.png" alt="Logo" />
         </div>
         <div class="search">
           <label class="input input-bordered flex items-center gap-2">
-            <input type="text" class="grow" placeholder="Search" />
+            <input id="searchText" type="text" class="grow" placeholder="Search" />
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"
@@ -36,14 +38,32 @@
           </label>
         </div>
         <div class="sortbtn">
-            <div class="btn">sort</div>
+          <div class="btn">sort</div>
         </div>
       </nav>
     </header>
     <main class="w-11/12 mx-auto">
-        <section id="cetegroyButton" class="flex gap-4 justify-center items-center py-2"></section>
-        <section id="videos" class="grid gap-3 gird-cols:1 md:grid-cols-2 lg:grid-cols-4 py-3"></section>
-
+      <section
+        id="cetegroyButton"
+        class="flex gap-4 justify-center items-center py-2"
+      ></section>
+      <section
+        id="videos"
+        class="grid gap-3 gird-cols:1 md:grid-cols-2 lg:grid-cols-4 py-3"
+      ></section>
+      <!-- modal -->
+      <button class="btn" onclick="">open modal</button>
+      <dialog id="my_modal_1" class="modal">
+        <div class="modal-box">
+          <div id="modal_container"></div>
+          <div class="modal-action">
+            <form method="dialog">
+              <!-- if there is a button in form, it will close the modal -->
+              <button class="btn">Close</button>
+            </form>
+          </div>
+        </div>
+      </dialog>
     </main>
     <script src="js/video.js"></script>
   </body>
