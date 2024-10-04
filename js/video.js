@@ -79,7 +79,7 @@ const DisplayVideos = (data) => {
     : (videosSection.classList.remove("grid"),
       (videosSection.innerHTML = `
     <div class="flex flex-col justify-center items-center">
-      <img src="assets/icon.png"/>
+      <img src="../assets/Icon.png"/>
     </div>
     `));
   
