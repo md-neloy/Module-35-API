@@ -1,12 +1,11 @@
-const searchText = document.getElementById("searchText")
+const searchText = document.getElementById("searchText");
 searchText.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
     loadVideos(searchText.value);
     return;
   }
-})
+});
 // fetch, load & show categories in html
-
 
 // create a function which coverts seconds to an hours, minutes & seconds
 function convertSeconds(seconds) {
@@ -32,8 +31,6 @@ const removeActiveClass = () => {
   }
 };
 
-
-
 // create DisplayCategories
 const DisplayCatagories = (data) => {
   const sectionCetegroyButton = document.getElementById("cetegroyButton");
@@ -43,14 +40,13 @@ const DisplayCatagories = (data) => {
     categoryBtn.addEventListener("click", () => {
       videosCatagory(element.category_id);
       removeActiveClass();
-      categoryBtn.classList.add("bg-lime-500", "hover:bg-lime-500")
+      categoryBtn.classList.add("bg-lime-500", "hover:bg-lime-500");
     });
     categoryBtn.innerText = element.category;
     sectionCetegroyButton.appendChild(categoryBtn);
   });
 };
 loadCatagories();
-
 
 // crate videosCatagory function
 const videosCatagory = async (videosCatagory) => {
@@ -63,7 +59,9 @@ const videosCatagory = async (videosCatagory) => {
 
 // crate load videos funtion
 const loadVideos = (title = "") => {
-  fetch(`https://openapi.programming-hero.com/api/phero-tube/videos?title=${title}`)
+  fetch(
+    `https://openapi.programming-hero.com/api/phero-tube/videos?title=${title}`
+  )
     .then((response) => response.json())
     .then((data) => DisplayVideos(data["videos"]))
     .catch((error) => console.log(error));
@@ -73,16 +71,14 @@ const loadVideos = (title = "") => {
 const DisplayVideos = (data) => {
   const videosSection = document.getElementById("videos");
   data.length
-    ? (videosSection.innerHTML = "",
-      videosSection.classList.add("grid")
-    )
+    ? ((videosSection.innerHTML = ""), videosSection.classList.add("grid"))
     : (videosSection.classList.remove("grid"),
       (videosSection.innerHTML = `
     <div class="flex flex-col justify-center items-center">
-      <img src="../assets/Icon.png"/>
+      <img src="./assets/icon.png"/>
     </div>
     `));
-  
+
   data.forEach((element) => {
     const card = document.createElement("div");
     card.classList = "card card-compact shadow-xl";
@@ -125,13 +121,13 @@ const DisplayVideos = (data) => {
     detailsButton.classList = "btn";
     detailsButton.addEventListener("click", () => {
       videoDetails(element.video_id);
-    })
+    });
     card.appendChild(detailsButton);
     videosSection.appendChild(card);
   });
 };
 // fetch video details from api
-const videoDetails = async(videoId) => {
+const videoDetails = async (videoId) => {
   const response = await fetch(
     `https://openapi.programming-hero.com/api/phero-tube/video/${videoId}`
   );
@@ -143,6 +139,5 @@ const videoDetails = async(videoId) => {
   <p class="py-2">${data.video.description}</p>
   `;
   my_modal_1.showModal();
-}
-
+};
 loadVideos();
